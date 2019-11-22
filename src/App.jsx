@@ -18,12 +18,6 @@ const App = () => {
     // console.log(resp)
   }
 
-  const fetchMinefield = async id => {
-    const resp = await axios.get(apiURL)
-    setMineField(resp.data.board)
-    console.log(resp)
-  }
-
   const playMinefield = async (row, col, mouse) => {
     const play = mouse == 2 ? 'flag' : 'check'
     const apiCall = apiURL + '/' + gameId + '/' + play
@@ -34,43 +28,7 @@ const App = () => {
     setMines(resp.data.mines)
   }
 
-  const checkField = (row, col) => {
-    playMinefield(row, col, 0)
-  }
-  const flagField = (row, col) => {
-    playMinefield(row, col, 2)
-  }
-  // const checkOrFlagField = (row, col, mouse) => {
-  //   switch (mouse) {
-  //     case '0':
-  //       handleCheckField(row, col)
-  //       break
-  //     case '2':
-  //       props.handleFlagField
-  //       break
-  //   }
-  // }
-  // useEffect(() => {
-  //   console.log()
-  // })
-
   useEffect(() => {
-    // const resp = {
-    //   id: 1,
-    //   board: [
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    //   ],
-    //   state: 'new',
-    //   mines: 10,
-    // }
-    // createMineField(resp.board)
     createMinefield(0)
   }, [])
 
@@ -79,9 +37,9 @@ const App = () => {
     <section className='allContainer'>
       <section className='gameContainer'>
         <section className='controlsContainer'>
-          <section className='minesLeft'>10</section>
+          <section className='minesLeft'>{mines}</section>
           <section className='startGame'><button className='button buttonStart' onClick={(e) => {createMinefield(0)}}>Start</button></section>
-          <section className='Timer'>00</section>
+          <section className='Timer'>{gameState}</section>
         </section>
         <div className='mineContainer'>
           {mineField.map((mineRow, indexRow) => {
@@ -89,8 +47,6 @@ const App = () => {
               return (
                 <Mine key={('0' + indexRow).slice(-2) + ('0' + indexCol).slice(-2)} row={indexRow} col={indexCol} field={field}
                       handleFieldClick = {playMinefield}
-                      // handleCheckField={ () => { checkField(indexRow,indexCol)}}
-                      // handleFlagField={ () => { flagField(indexRow,indexCol)}} 
                       />
               )
             })
