@@ -10,3 +10,48 @@ body {
   margin: 0;
   min-height: 100%;
 }
+* {
+  box-sizing: border-box;
+}
+
+.gameContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+}
+
+.controlsContainer {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid teal;
+  width: 100%;
+}
+
+.mineContainer {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  /* width: 50%; */
+  /* border: solid 1px black; */
+}
+
+/* .mineContainer:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+} */
+
+.allContainer {
+  width: 100%;
+}
+
+.square {
+  width: 12.5%;
+  height: 12.5%;
+}
