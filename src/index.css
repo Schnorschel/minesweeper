@@ -17,10 +17,10 @@ body {
 .gameContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 20%;
-
+  width: 30%;
+  height: 50%;
   position: fixed;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid black;
@@ -31,21 +31,31 @@ body {
   justify-content: space-around;
   border: 1px solid teal;
   width: 100%;
+  align-items: baseline;
 }
 
-.mineContainer {
-  display: flex;
-  flex-wrap: wrap;
+.outsideMinefieldContainer {
+  /* display: flex;
+  flex-wrap: wrap; */
   position: relative;
-  /* width: 50%; */
-  /* border: solid 1px black; */
+  width: 100%;
+  border: solid 1px black;
 }
 
-/* .mineContainer:after {
+.outsideMinefieldContainer::after {
   content: '';
   display: block;
   padding-bottom: 100%;
-} */
+}
+
+.insideMinefieldContainer {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
 
 .allContainer {
   width: 100%;
@@ -54,4 +64,21 @@ body {
 .square {
   width: 12.5%;
   height: 12.5%;
+}
+
+.redbomb {
+  color: red;
+}
+
+.greenbomb {
+  color: green;
+}
+
+.number {
+  font-weight: bolder;
+}
+
+.square {
+  font-size: 2vw;
+  border: 4px outset grey;
 }

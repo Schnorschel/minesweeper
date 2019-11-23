@@ -41,16 +41,18 @@ const App = () => {
           <section className='startGame'><button className='button buttonStart' onClick={(e) => {createMinefield(0)}}>Start</button></section>
           <section className='Timer'>{gameState}</section>
         </section>
-        <div className='mineContainer'>
-          {mineField.map((mineRow, indexRow) => {
-            return mineRow.map((field, indexCol) => {
-              return (
-                <Mine key={('0' + indexRow).slice(-2) + ('0' + indexCol).slice(-2)} row={indexRow} col={indexCol} field={field}
-                      handleFieldClick = {playMinefield}
-                      />
-              )
-            })
-          })}
+        <div className='outsideMinefieldContainer'>
+          <div className='insideMinefieldContainer'>
+            {mineField.map((mineRow, indexRow) => {
+              return mineRow.map((field, indexCol) => {
+                return (
+                  <Mine key={('0' + indexRow).slice(-2) + ('0' + indexCol).slice(-2)} row={indexRow} col={indexCol} field={field}
+                        handleFieldClick = {playMinefield}
+                        />
+                )
+              })
+            })}
+          </div>
         </div>
       </section>
     </section>

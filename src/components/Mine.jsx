@@ -8,8 +8,18 @@ const Mine = props => {
       onMouseDown={e => { props.handleFieldClick(props.row, props.col, e.button)
       }}
       onContextMenu={e => { e.preventDefault() }} 
-    >
-      {props.field === ' ' ? '.' : props.field}
+    > { props.field == ' ' ? <>&nbsp;</> : 
+       props.field == '*' ? <i class="fas fa-bomb redbomb"></i> : 
+       props.field == 'F' ? <i class="fab fa-font-awesome-flag"></i> : 
+       props.field == '@' ? <i class="fas fa-bomb greenbomb"></i> : 
+       !isNaN(props.field) ? <span className='number'>{props.field}</span> : props.field }
+      {/* { 
+       {switch (props.field) {
+        case ' ': <>&nbsp;</> 
+          break
+          default: props.field
+        } }
+      }  */}
     </button>
   )
 }
